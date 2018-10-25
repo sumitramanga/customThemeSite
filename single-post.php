@@ -8,6 +8,7 @@
 	<title>Document</title>
 </head>
 <body>
+	<h1>this is the single post page</h1>
 	<div class="container">
 		<?php if(have_posts()): ?>
 			<?php while(have_posts()): the_post(); ?>
@@ -29,6 +30,8 @@
 
 			<?php endwhile; ?>
 		<?php endif; ?>
+
+
 	</div>
 
 	<?php wp_footer(); ?>
