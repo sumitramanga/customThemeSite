@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<?php wp_head(); ?>
-	<title>Document</title>
-</head>
-<body>
+<?php get_header(); ?>
+
 	<div class="container">
 		<?php if(have_posts()): ?>
 			<?php while(have_posts()): the_post(); ?>
 
 				<div class="row">
+					<!-- if there is a feature image -->
 					<?php if(has_post_thumbnail()): ?>
 						<div class="col-xs-12 col-md-4">
 							<!-- Calling the function which feature image displays on page. Need to specfiy the size. array speifics attributes for tag.  -->
 							<?php the_post_thumbnail('medium', ['class' => 'img-fluid', 'alt'=>'thumbnail image']); ?>
 						</div>
 						<div class="col-xs-12 col-md-8">
+							<!-- else no feature image -->
 					<?php else: ?>
 						<div class="col-xs-12">
 					<?php endif; ?>
@@ -31,6 +25,4 @@
 		<?php endif; ?>
 	</div>
 
-	<?php wp_footer(); ?>
-</body>
-</html>
+<?php get_footer(); ?>

@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<?php wp_head(); ?>
-	<title>Document</title>
-</head>
-<body>
+<?php get_header('front'); ?>
+
 	<div class="container">
 
 		<h1>Home page</h1>
@@ -36,6 +28,7 @@
 		<?php endif; ?>
 	</div>
 
-	<?php wp_footer(); ?>
+	<!-- Here it used to be wp_footer(); but since we are including the template this has now changed -->
+	<?php get_footer('front'); ?>
 </body>
 </html>

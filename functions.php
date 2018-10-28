@@ -18,4 +18,19 @@ add_action('wp_enqueue_scripts', 'addCustomThemeStyles');
 
 // Feature image section displayed in the edit post or page. On upload the image get cropped in 4 different sizes. located in the uploads folder
 add_theme_support('post-thumbnails');
+
+// This crops the image *on upload* from anywhere.
 add_image_size('icon', 50, 50, true);
+
+// Creates the nav menu within the 'Appearance' section.
+// register_nav_menu('primary_menu', 'customthemesite');
+
+function addCustomMenus(){
+	// give the ablitiy to have menu on our site
+	add_theme_support('menus');
+	register_nav_menu('header_nav', 'This is the navigation which appears at the top of the page');
+	register_nav_menu('footer_nav', 'This is the navigation which appears at the bottom of the page');
+}
+
+// where we are adding it to init which ill initlise on load
+add_action('init', 'addCustomMenus');
