@@ -27,6 +27,7 @@ body {
 	color: #bb6f6b;
 	font-size: 20px;
 	font-weight: bold;
+	transition: 0.5s;
 }
 
 .main-menu .menu-item a:hover {
@@ -39,4 +40,5 @@ body {
 	font-size: 10px;
 	font-weight: bold;
 	font-style: oblique;
+	transition: 0.2s;
 }
