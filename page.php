@@ -2,6 +2,14 @@
 
 <!-- <h1>this is coming from page.php</h1> -->
 
+<!--
+	This page is rendering the pages that are created in Wordpress
+	such as the about page and sample page. In order for them to render
+	the content and title that has been set up in Wordpress admin, the
+	if and while loops along with the the_title and the_content are needed
+	to display on the page.
+ -->
+
 <?php if(have_posts()): ?>
 	<?php while(have_posts()): the_post(); ?>
 		<div class="container">

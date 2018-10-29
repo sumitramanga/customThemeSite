@@ -10,7 +10,8 @@
 <body>
 	<!-- <h3>This is comming from header.php</h3> -->
 	<!-- this is the header template -->
-	<!-- This displays the menu on the page. do not style the default -->
+	<!-- This displays the menu on the page. do not style the default class and
+ 	and id's. Instead, create tose attributes here. -->
 		<?php wp_nav_menu( array(
 			'theme_location' => 'header_nav',
 			'menu_class' => 'main-menu',

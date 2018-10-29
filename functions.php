@@ -27,7 +27,12 @@ add_image_size('icon', 50, 50, true);
 
 function addCustomMenus(){
 	// give the ablitiy to have menu on our site
+
+	// This will make the "menus" button appear in the apperance seciton
 	add_theme_support('menus');
+
+	// These are to give the user the option to where location of the nav can be displayed
+	// header_nav is defined in header-front.php where the settings for the top nav is. It is the theme_location.
 	register_nav_menu('header_nav', 'This is the navigation which appears at the top of the page');
 	register_nav_menu('footer_nav', 'This is the navigation which appears at the bottom of the page');
 }

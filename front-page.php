@@ -2,7 +2,7 @@
 <?php get_header('front'); ?>
 
 	<div class="container">
-
+		<!-- <p>front-page is rendering</p> -->
 		<h1>Home page</h1>
 
 		<?php if(have_posts()): the_post(); ?>

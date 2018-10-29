@@ -12,7 +12,7 @@
 							<?php the_post_thumbnail('medium', ['class' => 'img-fluid', 'alt'=>'thumbnail image']); ?>
 						</div>
 						<div class="col-xs-12 col-md-8">
-							<!-- else no feature image -->
+						<!-- else no feature image -->
 					<?php else: ?>
 						<div class="col-xs-12">
 					<?php endif; ?>

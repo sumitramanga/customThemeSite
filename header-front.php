@@ -13,6 +13,7 @@
 	<!-- this is the header-front template -->
 
 <!-- This displays the menu on the page. do not style the default -->
+
 	<?php wp_nav_menu( array(
 		'theme_location' => 'header_nav',
 		'menu_class' => 'main-menu',
