@@ -1,3 +1,4 @@
+<!-- Getting the header-front.php -->
 <?php get_header('front'); ?>
 
 	<div class="container">
@@ -28,7 +29,5 @@
 		<?php endif; ?>
 	</div>
 
-	<!-- Here it used to be wp_footer(); but since we are including the template this has now changed -->
-	<?php get_footer('front'); ?>
-</body>
-</html>
+<!-- Here it used to be wp_footer(); but since we are including the template this has now changed -->
+<?php get_footer('front'); ?>
