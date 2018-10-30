@@ -56,7 +56,8 @@ function add_staff_posts_type(){
 	$labels = array(
 		'name' => _x('Staff', 'post type name', '18wdwu02customtheme'),
 		'singular_name' => _x('Staff', 'post types singular name', '18wdwu02customtheme'),
-
+		'add_new_item' => _x('Add a new staff member', 'new member', '18wdwu02customtheme'),
+		'edit_item' => _x('New staff member', 'edit staff', '18wdwu02customtheme')
 	);
 
 	$args = array(
