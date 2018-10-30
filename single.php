@@ -5,24 +5,11 @@
 <!-- Every page needs if have post otherwise it will guess which post.  -->
 <?php if(have_posts()): ?>
 	<?php while(have_posts()): the_post(); ?>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<h1><?= the_title(); ?></h1>
-					<p>This is a blog post</p>
-					<hr>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div>
-						<p><?= the_content(); ?></p>
-					</div>
-				</div>
-			</div>
-		</div>
+
+		<!-- shows the content template -->
+		<?php get_template_part('content', get_post_format()); ?>
+		
 	<?php endwhile; ?>
 <?php endif; ?>
-
 
 <?php get_footer('front'); ?>

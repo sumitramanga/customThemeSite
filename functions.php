@@ -39,3 +39,7 @@ function addCustomMenus(){
 
 // where we are adding it to init which ill initlise on load
 add_action('init', 'addCustomMenus');
+
+// Adding the post formats to our theme. we are turning on post-format function
+// and the options 'aside, 'gallery', 'image' and 'video'
+add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video' ) );

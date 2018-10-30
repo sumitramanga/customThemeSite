@@ -9,20 +9,8 @@
 			<div class="row">
 				<?php while(have_posts()): the_post();?>
 
-					<?php if(has_post_thumbnail()): ?>
-						<div class="card" style="width: 18rem;">
-						<?php the_post_thumbnail('medium', ['class' => 'card-img-top', 'alt'=>'thumbnail image']); ?>
-
-					<?php else: ?>
-						<div class="card" style="width: 18rem;">
-
-					<?php endif; ?>
-							<div class="card-body">
-								<h5 class="card-title"><?php the_title(); ?></h5>
-								<p class="card-text"><?php the_content(); ?></p>
-								<a href="<?= esc_url(get_permalink()); ?>" class="btn btn-primary">Go to post</a>
-							</div>
-						</div>
+					<!-- Adding in content templates/formats such as content-image -->
+					<?php get_template_part('content', get_post_format()); ?>
 
 				<?php endwhile; ?>
 			</div>
