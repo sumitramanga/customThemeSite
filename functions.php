@@ -40,6 +40,42 @@ function addCustomMenus(){
 // where we are adding it to init which ill initlise on load
 add_action('init', 'addCustomMenus');
 
-// Adding the post formats to our theme. we are turning on post-format function
-// and the options 'aside, 'gallery', 'image' and 'video'
+/*
+Adding the post formats to our theme. we are turning on post-format function and
+the options 'aside, 'gallery', 'image' and 'video'. This is used to customise
+the styling of an inidividual post depending on which format is selected. Our
+now suports post formats
+ */
+
 add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video' ) );
+
+/*Here we are making our own post type. First we must add*/
+function add_staff_posts_type(){
+	// here we are changing the admin dashboard by adding in the options we want to show to the user
+
+	$labels = array(
+		'name' => _x('Staff', 'post type name', '18wdwu02customtheme'),
+		'singular_name' => _x('Staff', 'post types singular name', '18wdwu02customtheme'),
+
+	);
+
+	$args = array(
+		'labels' => $labels,
+		'description' => 'A post type for the staff members in the company',
+		'public' => true,
+		'hierarical' => true,
+		'exclude_from_search' => false,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_nav_menu' => false,
+		'menu_icon' => 'dashicons-groups',
+		'supports' => array(
+			'title',
+			'thumbnail'
+		),
+		'query_var' =>	true
+	);
+	register_post_type('staff', $args);
+}
+
+add_action('init', 'add_staff_posts_type');

@@ -1,3 +1,13 @@
+<!--
+
+content-image is create to display posts which have a format of image. This is
+choosen in the Edit Post section. We have turned on the "Post Formats" theme
+feature in the fucntions.php
+
+is_singular() a conditional tag (used in an if statement) checking if a singular post is
+being displayed.
+-->
+
 <?php if( is_singular() ): ?>
 	<div class="container" style="background-color:#D6CBEB">
 		<div class="row">
