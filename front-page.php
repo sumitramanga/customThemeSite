@@ -5,6 +5,14 @@
 		<!-- <p>front-page is rendering</p> -->
 		<h1>Home page</h1>
 
+		<!-- Displaying the logo on the site -->
+		<?php
+			if ( function_exists('the_custom_logo')) {
+				the_custom_logo();
+			}
+		 ?>
+		<br>
+
 		<?php if(have_posts()): the_post(); ?>
 			<div class="row">
 				<?php while(have_posts()): the_post();?>
