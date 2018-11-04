@@ -23,6 +23,15 @@
 				<?php endwhile; ?>
 			</div>
 		<?php endif; ?>
+
+		<!-- if the front_page_sidebar (id) sidebar active  -->
+		<?php if(is_active_sidebar('front_page_sidebar')): ?>
+			<div class="col-4">
+				<div id="frontSidebar">
+					<?php dynamic_sidebar('front_page_sidebar'); ?>
+				</div>
+			</div>
+		<?php endif; ?>
 	</div>
 
 <!-- Here it used to be wp_footer(); but since we are including the template this has now changed -->

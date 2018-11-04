@@ -17,7 +17,7 @@
 		$custom_logo = get_theme_mod('custom_logo');
 		// Getting the image path. $custom_logo is the id. 'medium' is the size of image wanting
 		$logo_url = wp_get_attachment_image_url($custom_logo, 'medium');
-		echo $logo_url;
+		// echo $logo_url;
 	 ?>
 
 	<?php if($custom_logo): ?>

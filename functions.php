@@ -61,7 +61,38 @@ function addCustomLogo(){
 		'flex-width' => true,
 		'flex-height' => true
 	));
+}
+add_action('init', 'addCustomLogo');
 
+// Adding the widget feature within apperance
+// function register_my_sidebars() {
+// 	register_sidebars( 2, array(
+// 		'name'          => 'Home right sidebar',
+// 		'id'            => 'home_right_1',
+// 		'before_widget' => '<div>',
+// 		'after_widget'  => '</div>',
+// 		'before_title'  => '<h2 class="rounded">',
+// 		'after_title'   => '</h2>',
+// 	) );
+// }
+// add_action( 'widgets_init', 'register_my_sidebars' );
+
+
+function register_my_sidebars(){
+	register_sidebar(array(
+		// unique identifer for a specific side bar (for instants this is on the home page)
+		'id' => 'front_page_sidebar',
+		// Name is the front end name for the user
+		'name' => 'Front Page Sidebar',
+		'description' => 'Sidebar which appears on the front page',
+		// What html tag are needed around the widget. "%1$s" is a class/id which gives the classes automatically
+		'before_widget' => '<div id="%1$s" class="widget customWidget %2$s">',
+		'after_widget' => '</div>',
+
+		// Optinal title
+		'before_title' => '<h3 class="widgetTitle">',
+		'after_title' => '</h3>'
+	));
 }
 
-add_action('init', 'addCustomLogo');
+add_action('widgets_init', 'register_my_sidebars');
