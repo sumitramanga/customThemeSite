@@ -96,3 +96,54 @@ function register_my_sidebars(){
 }
 
 add_action('widgets_init', 'register_my_sidebars');
+
+
+register_default_headers(array(
+	'banner' => array(
+			'url' => get_template_directory_uri() . '/assets/images/default-image-header.jpg',
+			'thumbnail_url' => get_template_directory_uri() . '/assets/images/default-image-header.jpg',
+			'description' => 'Default Banner Image for front page'
+	)
+));
+
+/*
+	Adding a header with a bg image.
+	width and height uses aspect ratio which is said in the customiser. Recommended size for the admin user.
+	default-iamge
+
+	get_template_directory_uri() get the path for the folder
+*/
+function add_Custom_Header(){
+	$defaults = array(
+		'default-image'          => get_template_directory_uri() . '/assets/images/default-image-header.jpg',
+		'width'                  => 1280,
+		'height'                 => 720,
+		'flex-height'            => false,
+		'flex-width'             => false,
+		'uploads'                => true,
+		'random-default'         => false,
+		'header-text'            => true,
+		'default-text-color'     => ''
+	);
+
+	add_theme_support( 'custom-header', $defaults );
+}
+
+add_action('init', 'add_Custom_Header');
+
+
+function add_the_custom_background(){
+	$defaults = array(
+		'default-color'          => 'white',
+		'default-image'          => '',
+		'default-repeat'         => 'repeat',
+		'default-position-x'     => 'left',
+        'default-position-y'     => 'top',
+        'default-size'           => 'auto',
+		'default-attachment'     => 'scroll',
+		'wp-head-callback'       => '_custom_background_cb'
+	);
+	add_theme_support( 'custom-background', $defaults );
+}
+
+add_action('init', 'add_the_custom_background');
