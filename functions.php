@@ -49,8 +49,9 @@ now suports post formats
 
 add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video' ) );
 
-// Splitting functions into separate file for best practises
+// Splitting functions into separate file for best practises. We need to get the file in order for it to run in.
 require get_parent_theme_file_path('./addons/custom_post_types.php');
+require get_parent_theme_file_path('./addons/custom_customizer.php');
 
 // adding logo support in the customise section
 // flex-width means a custom width and height can be made
@@ -122,7 +123,7 @@ function add_Custom_Header(){
 		'flex-width'             => false,
 		'uploads'                => true,
 		'random-default'         => false,
-		'header-text'            => true,
+		'header-text'            => false,
 		'default-text-color'     => ''
 	);
 
@@ -131,7 +132,7 @@ function add_Custom_Header(){
 
 add_action('init', 'add_Custom_Header');
 
-
+// Adding a custom background on the page
 function add_the_custom_background(){
 	$defaults = array(
 		'default-color'          => 'white',

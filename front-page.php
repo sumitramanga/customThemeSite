@@ -4,6 +4,9 @@
 	<div class="container">
 		<!-- <p>front-page is rendering</p> -->
 		<h1>Home page</h1>
+		<!-- Getting a theme modification which is an sql query. Always looking for the setting not control.
+	 		shoudl always echo -->
+		 <!-- php echo get_theme_mod('header_background_colour_setting');  -->
 
 		<!-- Displaying the logo on the site -->
 		<?php

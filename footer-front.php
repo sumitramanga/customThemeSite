@@ -7,6 +7,13 @@
 		'menu_id' => 'footer-menu',
 		'container_id' => 'menu-bottom-menu'
 	)) ?>
+
+	<div class="row">
+		<div class="col text-center">
+			<p><?php echo get_theme_mod ?></p>
+		</div>
+
+	</div>
 	<?php wp_footer(); ?>
 </body>
 </html>

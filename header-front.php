@@ -13,13 +13,16 @@
 	<!-- this is the header-front template -->
 
 <!-- This displays the menu on the page. do not style the default -->
-
-	<?php wp_nav_menu( array(
-		'theme_location' => 'header_nav',
-		'menu_class' => 'main-menu',
-		'menu_id' => 'main-menu',
-		'container_id' => 'menu-top-menu'
- 	) ); ?>
+	<div class="container">
+		<nav class="header-bg">
+			<?php wp_nav_menu( array(
+				'theme_location' => 'header_nav',
+				'menu_class' => 'main-menu',
+				'menu_id' => 'main-menu',
+				'container_id' => 'menu-top-menu'
+			) ); ?>
+		</nav>
+	</div>
 
 	<?php
 		if (get_header_image() == false) {
@@ -28,7 +31,7 @@
 			$bannerImage = get_header_image();
 		}
 	 ?>
-	 
+
 
 	<div class="front-page-header bg-dark" id="front-page-header" style="background-image: url(<?= $bannerImage ?>);">
 	</div>
