@@ -16,6 +16,13 @@ function addCustomThemeStyles() {
 // renders out the stylshet in wp-head.
 add_action('wp_enqueue_scripts', 'addCustomThemeStyles');
 
+// Adding styling to admin (back end) style
+function add_admin_custom_styles(){
+	wp_enqueue_style('admin-style', get_template_directory_uri() . '/assets/css/admin.css', array(), '0.0.1', 'all');
+}
+
+add_action('admin_enqueue_scripts', 'add_admin_custom_styles');
+
 // Feature image section displayed in the edit post or page. On upload the image get cropped in 4 different sizes. located in the uploads folder
 add_theme_support('post-thumbnails');
 
@@ -52,6 +59,7 @@ add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video' )
 // Splitting functions into separate file for best practises. We need to get the file in order for it to run in.
 require get_parent_theme_file_path('./addons/custom_post_types.php');
 require get_parent_theme_file_path('./addons/custom_customizer.php');
+require get_parent_theme_file_path('./addons/custom_fields.php');
 
 // adding logo support in the customise section
 // flex-width means a custom width and height can be made
