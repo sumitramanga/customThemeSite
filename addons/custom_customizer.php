@@ -93,6 +93,59 @@
 				)
 			)
 		);
+
+		// Adding in panels in the customizer. Lopoping through so we dont repeat ourselves
+		$wp_customize->add_panel('Featured_Posts_Panel', array(
+			'title' => __('Featured Posts', '18wdwu02customtheme'),
+			'priority' => 30,
+			'description' => 'This panel will hold the featured posts sections'
+		));
+
+		$args = array(
+			'numberposts' => -1
+		);
+		$allPosts = get_posts($args);
+
+		$option = array();
+
+		foreach ($allPosts as $singlePost) {
+			$options[$singlePost->ID] = $singlePost->post_title;
+		}
+
+		// starting from one.
+		// for loop stops when it gets to 2 b/c we only want two sections.
+		// Cancatinating a variable use .$i or .$i.
+		for ($i=1; $i <= 2 ; $i++) {
+			$wp_customize->add_section('featured_post_'.$i, array(
+				'title' => __('Featured Post '.$i, '18wdwu02customtheme'),
+				'priority' => 21,
+				'panel' => 'Featured_Posts_Panel'
+			));
+
+			$wp_customize->add_setting('featured_post_'.$i.'_setting', array(
+				'default' => '',
+				'transport' => 'refresh'
+			));
+
+			// key ('value1') is the value that is stored in the select option.
+			// next comes the name of the value name
+			$wp_customize->add_control(
+				new WP_Customize_Control(
+					$wp_customize,
+					'featured_post_'.$i.'_control',
+					array(
+						'label' => __('Featured post', '18wdwu02customtheme'),
+						'section' => 'featured_post_'.$i,
+						'settings' => 'featured_post_'.$i.'_setting',
+						'type' => 'select',
+						'choices' => $options
+					)
+				)
+			);
+		}
+
+
+
 // -----------------------------------------------------------------------------
 	}
 
