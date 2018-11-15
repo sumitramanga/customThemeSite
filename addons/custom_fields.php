@@ -18,6 +18,28 @@
 					'type' => 'number'
 				)
 			)
+		),
+
+		/* Adding in 2 custom fields (email input and drop down) in the back end
+		(added or editing an enquiry) for the enquiries section */
+		'enquiries' => array(
+			'title' => 'Enquiries',
+			'applicableto' => 'enquiries',
+			'location' => 'normal',
+			'priority' => 'high',
+			'fields' => array(
+				'email' => array(
+					'title' => 'Email address',
+					'type' => 'email',
+					'description' => 'The persons email address'
+				),
+				'courseInterest' => array(
+					'title' => 'Course interested in',
+					'type' => 'select',
+					'description' => 'Course interested in',
+					'option' => array('option1', 'option2', 'option3')
+				)
+			)
 		)
 	);
 
@@ -45,7 +67,6 @@
 
 		$output = '<input type="hidden" name="post_format_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'">';
 
-
 		if (! empty($fields)) {
 			foreach ($fields as $id => $field) {
 				switch($field['type']){
@@ -58,8 +79,17 @@
 						$output .= '<input type="number" name="'.$id.'"  value="'.$customValues[$id][0].'">';
 					break;
 					case 'select':
-						$output .= '<label for="'.$id.'">'.$field['title'].'</label>';
-						$output .= '<select></select>';
+						$output .= '<label class="customLabel">'.$field['title'].'</label>';
+						$output .= '<select name="'.$id.'"><option>Choosen an option</option>';
+						$options = $field['option'];
+						foreach ($options as $option) {
+							$output .= '<option value="'.$option.'">'.$option.'</option>';
+						}
+						$output .= '</select>';
+					break;
+					case 'email':
+						$output .= '<label class="customLabel">'.$field['title'].'</label>';
+						$output .= '<input type="email" name="'.$id.'" class="customField" value="'.$customValues[$id][0].'">';
 					break;
 					default:
 						$output .= '<label for="'.$id.'">'.$field['title'].'</label>';

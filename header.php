@@ -21,7 +21,9 @@
 	 ?>
 
 	<?php if($custom_logo): ?>
-	  <img class="img-fluid" src="<?= $logo_url ?>" alt="Logo">
+		<div class="logo">
+			<img class="img-fluid" src="<?= $logo_url ?>" alt="Logo">
+		</div>
 	<?php endif; ?>
 
 

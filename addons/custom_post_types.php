@@ -29,4 +29,33 @@ function add_staff_posts_type(){
 	register_post_type('staff', $args);
 }
 
+function add_enquiries_posts_type(){
+
+	$labels = array(
+		'name' => _x('Enquiries', 'post type name', '18wdwu02customtheme'),
+		'singular_name' => _x('Enquiries', 'post types singular name', '18wdwu02customtheme'),
+		'add_new_item' => _x('Add a new enquiries', 'adding new enquiries', '18wdwu02customtheme')
+	);
+
+	// editor is the type you want to edit as
+	$args = array(
+		'labels' => $labels,
+		'description' => 'Enquiries that come through the site',
+		'public' => false,
+		'hierarical' => true,
+		'exclude_from_search' => true,
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_nav_menu' => false,
+		'menu_icon' => 'dashicons-megaphone',
+		'supports' => array(
+			'title',
+			'editor'
+		),
+		'query_var' =>	true
+	);
+	register_post_type('enquiries', $args);
+}
+
 add_action('init', 'add_staff_posts_type');
+add_action('init', 'add_enquiries_posts_type');
