@@ -10,7 +10,25 @@ function addCustomThemeStyles() {
 	// trues put in footers
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('bootstrapjs', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array(), '4.1.3', true);
-	wp_enqueue_script('customjs', get_template_directory_uri(). '/assets/js/theme-script.js', array(), '0.0.1', true);
+	wp_enqueue_script('theme-script', get_template_directory_uri(). '/assets/js/theme-script.js', array(), '0.0.1', true);
+
+	// tell wordpress we're usingthis
+	global $wp_query;
+
+	// Sending our varibles to theme-scripts
+	wp_localize_script('theme-script', 'load_more', array(
+		// 'test' is the key and 'this is..'is the value
+		// 'test' => 'This is coming from functions.php'
+
+		// Wordpress own ajax request. Not hard the url therfore using the site_url()
+		'ajax_url' => site_url() . '/wp-admin/admin-ajax.php',
+		// Get the query to send to the JS.
+		'query' => json_encode($wp_query->query_vars),
+		// Get the current page we're currently on. ? = or get this (Here we are getting page 1)
+		'current_page' => get_query_var('paged') ? get_query_var('paged'): 1,
+		// what is the maximum page allowed
+		'max_page' => $wp_query->max_num_pages
+	));
 }
 
 // renders out the stylshet in wp-head.
@@ -156,3 +174,28 @@ function add_the_custom_background(){
 }
 
 add_action('init', 'add_the_custom_background');
+
+// Getting the page number using ajax request
+function ajax_load_more_posts_on_front_page() {
+	// decoding to a json format. striplashes removes slashes from string
+	$args = json_decode( stripslashes($_POST['query']), true );
+	// if on page 1 we want to get page 2
+	$args['paged'] = $_POST['page'] + 1;
+	// Only want published posts
+	$args['post_status'] = 'publish';
+
+	// Calling the default query
+	query_posts($args);
+
+	// what we want to get rendered out. Since we have created the html we only need to get the template
+	if(have_posts()):
+		while (have_posts()): the_post();
+			get_template_part('content', get_post_format());
+		endwhile;
+	endif;
+
+	die();
+}
+
+add_action('wp_ajax_loadmore', 'ajax_load_more_posts_on_front_page');
+add_action('wp_ajax_nopriv_loadmore', 'ajax_load_more_posts_on_front_page');

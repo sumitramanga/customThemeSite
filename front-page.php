@@ -46,16 +46,36 @@
 		 ?>
 		<br>
 
-		<?php if(have_posts()): the_post(); ?>
+		<!-- Showing the posts -->
 			<div class="row">
-				<?php while(have_posts()): the_post();?>
+				<div class="col">
+					<?php if(have_posts()): ?>
+						<div class="card-columns">
+							<?php while(have_posts()): the_post();?>
 
-					<!-- Adding in content templates/formats such as content-image -->
-					<?php get_template_part('content', get_post_format()); ?>
+								<!-- Adding in content templates/formats such as content-image -->
+								<?php get_template_part('content', get_post_format()); ?>
 
-				<?php endwhile; ?>
+							<?php endwhile; ?>
+						</div>
+					<?php endif; ?>
+				</div>
+				<?php
+					$total = wp_count_posts()->publish;
+					// echo $total;
+					$canShow = get_option('posts_per_page');
+					// echo $canShow;
+				  ?>
+
+				<!-- Shows more posts -->
+				<?php if ($total > $canShow):  ?>
+					<div class="col-12">
+						<hr>
+						<button type="button" name="button" class="btn btn-primary btn-block show-more">Show More</button>
+					</div>
+				<?php endif; ?>
 			</div>
-		<?php endif; ?>
+
 
 		<!-- if the front_page_sidebar (id) sidebar active  -->
 		<?php if(is_active_sidebar('front_page_sidebar')): ?>
