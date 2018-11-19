@@ -19,7 +19,9 @@
 				$args = array(
 					'post_type' => 'staff',
 					'order' => 'ASC',
-					'orderby' => 'title'
+					'orderby' => 'title',
+					// Overidding the post per post that's been set in the wordpress site
+					'posts_per_page' => 4
 				);
 				// making a new query
 				$allStaffMembers = new WP_QUERY($args);
