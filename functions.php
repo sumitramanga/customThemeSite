@@ -37,6 +37,22 @@ add_action('wp_enqueue_scripts', 'addCustomThemeStyles');
 // Adding styling to admin (back end) style
 function add_admin_custom_styles(){
 	wp_enqueue_style('admin-style', get_template_directory_uri() . '/assets/css/admin.css', array(), '0.0.1', 'all');
+	wp_enqueue_script('admin-scripts', get_template_directory_uri(). '/assets/js/admin-scripts.js', array(), '0.0.1', true);
+
+	// To send the varibles to javascript btu haveto make the global varible 
+	global $metaboxes;
+	$formats = array();
+
+	// Getting only metaboxes that have the psot format
+	foreach ($metaboxes as $id => $metabox) {
+		if ($metabox['format_condition']) {
+			$formats[$metabox['format_condition']] = $id;
+		}
+	}
+	// To send the varibles to javascript
+	wp_localize_script('admin-scripts', 'formats', array(
+		'allFormats' => $formats
+	));
 }
 
 add_action('admin_enqueue_scripts', 'add_admin_custom_styles');
@@ -72,7 +88,7 @@ the styling of an inidividual post depending on which format is selected. Our
 now suports post formats
  */
 
-add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video' ) );
+add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video', 'audio' ) );
 
 // Splitting functions into separate file for best practises. We need to get the file in order for it to run in.
 require get_parent_theme_file_path('./addons/custom_post_types.php');

@@ -40,7 +40,37 @@
 					'option' => array('option1', 'option2', 'option3')
 				)
 			)
-		)
+		),
+
+		'video_info' => array(
+			'title' => 'Video Information',
+			'applicableto' => 'post',
+			'format_condition' => 'post-format-video',
+			'location' => 'normal',
+			'priority' => 'high',
+			'fields' => array(
+				'video_url' => array(
+					'title' => 'Please enter a url to the video',
+					'type' => 'text',
+					'description' => 'Please enter a url to the video'
+				)
+			)
+		),
+
+		'audio_info' => array(
+			'title' => 'Audio Information',
+			'applicableto' => 'post',
+			'format_condition' => 'post-format-audio',
+			'location' => 'normal',
+			'priority' => 'high',
+			'fields' => array(
+				'audio_url' => array(
+					'title' => 'Please enter a url to the audio',
+					'type' => 'text',
+					'description' => 'Please enter a url to the audio'
+				),
+			)
+		),
 	);
 
 	function add_custom_fields() {

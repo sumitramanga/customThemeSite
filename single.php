@@ -8,7 +8,7 @@
 
 		<!-- shows the content template -->
 		<?php get_template_part('content', get_post_format()); ?>
-
+		
 		<div class="container">
 			<div class="col">
 				<?php $comments_args = array(
