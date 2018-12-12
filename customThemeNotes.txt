@@ -1,0 +1,7 @@
+- index.php and style.css are needed
+- functions.php is adding more functions into functions premade
+- if and while statement needed to show posts (posts are both individual posts
+and pages as well)
+- the_title() and the_content() within index.php are functions which render
+whats in the database
+- 
